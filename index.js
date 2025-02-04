@@ -21,7 +21,6 @@ const url = 'https://ext-api.vasttrafik.se/pr/v4';
 
 
 
-
 // fetch(url)
 //   .then((response) => {
     //     // We take the response Promise and return it as JSON.
