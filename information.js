@@ -1,6 +1,3 @@
-// const axios = require('axios');
-// const qs = require('qs');
-
 import axios from 'axios';
 import qs from 'qs';
 import dotenv from 'dotenv';
@@ -25,7 +22,9 @@ let config = {
 
 axios.request(config)
 .then((response) => {
-  console.log(JSON.stringify(response.data));
+ let accessResponse = response.data;
+ let accessToken = accessResponse["access_token"];
+  
 })
 .catch((error) => {
   console.log(error);
