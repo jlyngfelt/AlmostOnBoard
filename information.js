@@ -23,8 +23,6 @@ let configAccessToken = {
   data : data
 };
 
-
-
 axios.request(configAccessToken)
 .then((response) => {
  let accessResponse = response.data;
@@ -52,6 +50,23 @@ axios.request(configAccessToken)
 .catch((error) => {
   console.log(error);
 });
+
+//What we want to save from JSON-response
+// "serviceJourney": { 
+// 	”shortDirection”
+// }
+
+// ”line”: {
+// 	”shortName”
+// 	”transportMode”
+// }
+
+// "stopPoint": { 
+// 	”name”
+// }
+
+// "estimatedOtherwisePlannedTime"
+//  "isCancelled"
 
 
 
