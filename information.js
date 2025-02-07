@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 
 let stopName = "9021014004790000";
 let platform = "A";
+let shortDirection = '';
 
 let data = qs.stringify({
   'grant_type': 'client_credentials',
@@ -40,7 +41,16 @@ axios.request(configAccessToken)
 };
  axios.request(configGetAPI)
  .then((response) => {
-   console.log(JSON.stringify(response.data));
+ 
+  let allInformation = response.data
+  let shortDirection = allInformation['results'][0]['serviceJourney']['directionDetails']['shortDirection'];
+  let shortName = allInformation['results'][0]['serviceJourney']['line']['shortName'];
+  let transportMode = allInformation['results'][0]['serviceJourney']['line']['transportMode'];
+  let stopPointName = allInformation['results'][0]['stopPoint']['name'];
+  let isCancelled = allInformation['results'][0]['isCancelled'];
+  let estTime = allInformation['results'][0]['estimatedOtherwisePlannedTime'];
+  
+  console.log(shortDirection, shortName, transportMode, stopPointName, isCancelled, estTime)
  })
  .catch((error) => {
    console.log(error);
@@ -50,6 +60,7 @@ axios.request(configAccessToken)
 .catch((error) => {
   console.log(error);
 });
+
 
 //What we want to save from JSON-response
 // "serviceJourney": { 
