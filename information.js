@@ -26,7 +26,7 @@ let configAccessToken = {
   data: data,
 };
 
-axios
+export const endpointData = axios
   .request(configAccessToken)
   .then((response) => {
     let accessResponse = response.data;
@@ -43,30 +43,27 @@ axios
       },
       data: data,
     };
+
     axios
       .request(configGetAPI)
       .then((response) => {
         let allInformation = response.data;
-        let shortDirection =
-          allInformation["results"][0]["serviceJourney"]["directionDetails"][
-            "shortDirection"
-          ];
-        // let shortName = allInformation['results'][0]['serviceJourney']['line']['shortName'];
-        // let transportMode = allInformation['results'][0]['serviceJourney']['line']['transportMode'];
-        // let stopPointName = allInformation['results'][0]['stopPoint']['name'];
-        // let isCancelled = allInformation['results'][0]['isCancelled'];
-        // let estTime = allInformation['results'][0]['estimatedOtherwisePlannedTime'];
 
-        // console.log(shortDirection, shortName, transportMode, stopPointName, isCancelled, estTime)
+        let shortDirection = allInformation["results"][0]["serviceJourney"]["directionDetails"]["shortDirection"];
+        let shortName = allInformation['results'][0]['serviceJourney']['line']['shortName'];
+        let transportMode = allInformation['results'][0]['serviceJourney']['line']['transportMode'];
+        let stopPointName = allInformation['results'][0]['stopPoint']['name'];
+        let isCancelled = allInformation['results'][0]['isCancelled'];
+        let estTime = allInformation['results'][0]['estimatedOtherwisePlannedTime'];
 
-        return allInformation, shortDirection;
+        console.log(shortName);
+
       })
       .catch((error) => {
         console.log(error);
       });
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-
-export default allInformation;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+    
