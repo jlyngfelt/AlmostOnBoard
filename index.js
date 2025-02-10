@@ -1,30 +1,32 @@
 import express from 'express';
-import axios from 'axios';
-import passport from 'passport';
-import OAuth2Strategy from 'passport-oauth2';
-import fs from 'fs';
-import path from 'path';
-import { endpointData } from './information.js';
+import { fetchVasttrafikData } from './information.js';
 
 const app = express();
 const port = 4000;
 const url = 'https://ext-api.vasttrafik.se/pr/v4';
+      
 
-app.get('/', (req, res) => {
-    res.json({status: 'good'})
-})
+app.get("/", async (req, res) => {
+    try {
+        const data = await fetchVasttrafikData();
+        const shortName = await data.shortName;
+        const shortDirection = await data.shortDirection;
 
-console.log(endpointData.shortName);
+        console.log(shortName);
+        console.log(shortDirection);
+
+        res.json(data);
+    
+
+    } catch (error) {
+        console.error('Error handling request:', error);
+        res.status(500).json({ error: "Failed to fetch data" });
+    }
+});
+
+app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
+});
 
 
-app.listen(port, () =>{
-    console.log(`server listening to port ${port}`);
-})
 
-
-        
-
-        
-
-        
-        
