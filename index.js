@@ -15,6 +15,8 @@ app.get("/", async (req, res) => {
         console.log(shortName);
         console.log(shortDirection);
 
+
+        
         res.json(data);
     
 
@@ -29,4 +31,8 @@ app.listen(port, () => {
 });
 
 
+
+
+        const h1 = document.getElementById('h1');
+        h1.textContent = shortName;
 
