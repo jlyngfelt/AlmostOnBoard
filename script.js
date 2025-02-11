@@ -1,6 +1,6 @@
 async function fetchData() {
     try {
-        const response = await fetch("https://https://almost-on-board.vercel.app/data");
+        const response = await fetch("http://almost-on-board.vercel.app/data");
         const data = await response.json();
         
         // Uppdatera HTML med API-datan
