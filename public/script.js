@@ -1,3 +1,4 @@
+console.log("hej");
 async function fetchData() {
     try {
         const response = await fetch("https://almost-on-board.vercel.app/data");
@@ -11,6 +12,7 @@ async function fetchData() {
         console.error("Error fetching data:", error);
     }
 }
+
 
 fetchData(); // Hämta data direkt vid sidladdning
 setInterval(fetchData, 30000); // Uppdatera var 30:e sekund
