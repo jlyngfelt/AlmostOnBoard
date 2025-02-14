@@ -1,5 +1,6 @@
 import axios from "axios";
 import qs from "qs";
+import { getDepartures } from "./departureUtils.js";
 
 export const getAccessToken = async () => {
   const data = qs.stringify({
@@ -45,17 +46,14 @@ const getDepartureData = async (accesstoken) => {
     const response = await axios.request(configGetAPI);
     const allInformation = response.data;
 
+    const departures = getDepartures(allInformation);
+
     return {
-      shortDirection:
-        allInformation.results[0].serviceJourney.directionDetails
-          .shortDirection,
-      shortName: allInformation.results[0].serviceJourney.line.shortName,
-      transportMode:
-        allInformation.results[0].serviceJourney.line.transportMode,
-      stopPointName: allInformation.results[0].stopPoint.name,
-      isCancelled: allInformation.results[0].isCancelled,
-      estTime: allInformation.results[0].estimatedOtherwisePlannedTime,
-      // rawData: allInformation,
+
+      firstDeparture: departures[0] ?? null,
+      secondDeparture: departures[1] ?? null,
+      thirdDeparture: departures[2] ?? null,
+
     };
   } catch (error) {
     console.error("Error getting departure data:", error);
