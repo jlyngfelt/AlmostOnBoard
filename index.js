@@ -50,19 +50,24 @@ app.get("/data/:token", async (req, res) => {
   console.log("tokensidan");
   try {
     const { token } = req.params;
-  //   // if (token) {
-    const data = await fetchVasttrafikData(token);
-  //   // }
-  //   // if (!data) {
-  //   //   const accessToken = await getAccessToken();
-    
+    if (!token) {
+      return res.redirect('/data');
+    }
 
-  //   res.json(data);
+try {
+      const data = await fetchVasttrafikData(token);
+      res.json(data);
+    } catch (tokenError) {
+      // Om token är ogiltig, omdirigera till /data för att få ny token
+      console.log("Token invalid, redirecting to get new token");
+      return res.redirect('/data');
+    }
   } catch (error) {
     console.error("Error handling request:", error);
     res.status(500).json({ error: "Failed to fetch data" });
   }
 });
+
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
