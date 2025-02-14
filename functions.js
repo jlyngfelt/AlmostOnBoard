@@ -55,7 +55,7 @@ const getDepartureData = async (accesstoken) => {
       stopPointName: allInformation.results[0].stopPoint.name,
       isCancelled: allInformation.results[0].isCancelled,
       estTime: allInformation.results[0].estimatedOtherwisePlannedTime,
-      rawData: allInformation,
+      // rawData: allInformation,
     };
   } catch (error) {
     console.error("Error getting departure data:", error);
@@ -72,7 +72,3 @@ export const fetchVasttrafikData = async (token) => {
     throw error;
   }
 };
-
-// const hej = getAccessToken();
-
-// console.log(hej);
