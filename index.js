@@ -32,6 +32,7 @@ app.post('/search', async (req, res) => {
       const accessToken = await getAccessToken();
       const results = await searchForStopPoint(accessToken, searchText);
       res.json(results);
+      
   } catch (error) {
       res.status(500).json({ error: error.message });
   }
