@@ -21,6 +21,8 @@ form.addEventListener('submit', async (e) => {
         displayResults(data);
         // console.log(stop.name, data[0].gid);
 
+  
+
         
     } catch (error) {
         console.error('Error:', error);
@@ -41,7 +43,13 @@ function displayResults(data) {
             li.textContent = `${item.name}`;
             
             li.addEventListener('click', () => {
+                localStorage.setItem("selectedGid",'');
                 selectedGid = item.gid;
+
+                if (selectedGid) {
+                    localStorage.setItem("selectedGid", selectedGid);
+                  }
+
                 console.log('Selected GID:', selectedGid);
             });
             
@@ -49,3 +57,4 @@ function displayResults(data) {
         });
     }
 }
+

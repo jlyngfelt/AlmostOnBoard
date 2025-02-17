@@ -30,13 +30,14 @@ export const getAccessToken = async () => {
 };
 
 const getDepartureData = async (accesstoken) => {
-  const stopName = "9021014003640000";
+  const selectedGid = localStorage.getItem("selectedGid");
+  // const selectedGid = "9021014003640000";
   const platform = "B";
 
   const configGetAPI = {
     method: "get",
     maxBodyLength: Infinity,
-    url: `https://ext-api.vasttrafik.se/pr/v4/stop-areas/${stopName}/departures?platforms=${platform}&timeSpanInMinutes=1439&maxDeparturesPerLineAndDirection=3&limit=3&offset=0&includeOccupancy=false`,
+    url: `https://ext-api.vasttrafik.se/pr/v4/stop-areas/${selectedGid}/departures?platforms=${platform}&timeSpanInMinutes=1439&maxDeparturesPerLineAndDirection=3&limit=3&offset=0&includeOccupancy=false`,
     headers: {
       Authorization: `Bearer ${accesstoken}`,
     },
