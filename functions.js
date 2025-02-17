@@ -30,7 +30,7 @@ export const getAccessToken = async () => {
 };
 
 const getDepartureData = async (accesstoken) => {
-  const stopName = "9021014004790000";
+  const stopName = "9021014003640000";
   const platform = "B";
 
   const configGetAPI = {

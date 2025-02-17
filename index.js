@@ -20,7 +20,6 @@ dotenv.config();
 app.use(cors());
 
 app.get("/data", async (req, res) => {
-  console.log("tokensidan");
   try {
     const accesstoken = await getAccessToken();
     const data = await fetchVasttrafikData(accesstoken);
@@ -32,7 +31,6 @@ app.get("/data", async (req, res) => {
 });
 
 app.get("/data/:token", async (req, res) => {
-  console.log("tokensidan");
   try {
     const { token } = req.params;
     if (!token) {
