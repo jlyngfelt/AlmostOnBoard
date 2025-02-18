@@ -32,7 +32,7 @@ export const getAccessToken = async () => {
 
 const getDepartureData = async (accesstoken, selectedGid) => {
 
-  const platform = "B";
+  const platform = "A";
 
   const configGetAPI = {
     method: "get",
