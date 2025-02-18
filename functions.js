@@ -2,6 +2,7 @@ import axios from "axios";
 import qs from "qs";
 import { getDepartures } from "./departureUtils.js";
 
+
 export const getAccessToken = async () => {
   const data = qs.stringify({
     grant_type: "client_credentials",
@@ -29,9 +30,8 @@ export const getAccessToken = async () => {
   }
 };
 
-const getDepartureData = async (accesstoken) => {
-  const selectedGid = localStorage.getItem("selectedGid");
-  // const selectedGid = "9021014003640000";
+const getDepartureData = async (accesstoken, selectedGid) => {
+
   const platform = "B";
 
   const configGetAPI = {
@@ -62,9 +62,9 @@ const getDepartureData = async (accesstoken) => {
   }
 };
 
-export const fetchVasttrafikData = async (token) => {
+export const fetchVasttrafikData = async (token, selectedGid) => {
   try {
-    const departureData = await getDepartureData(token);
+    const departureData = await getDepartureData(token, selectedGid);
     return departureData;
   } catch (error) {
     console.error("Error in fetchVasttrafikData:", error);

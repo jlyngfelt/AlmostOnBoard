@@ -7,6 +7,7 @@ async function fetchData() {
       endpoint = `/data/${localToken}`;
     }
 
+
     const response = await fetch(`http://localhost:4000${endpoint}`);
 
     // Link to use on deploy:
@@ -41,4 +42,4 @@ async function fetchData() {
 }
 
 fetchData();
-setInterval(fetchData, 30000); // Uppdatera var 30:e sekund
+setInterval(fetchData, 3ç000); // Uppdatera var 30:e sekund

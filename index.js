@@ -40,10 +40,23 @@ app.post('/search', async (req, res) => {
 
 //TEST END
 
+let selectedGid = 9021014082053000; // Global variabel
+
+app.post('/data', async (req, res) => {
+    selectedGid = req.body.selectedGid;
+    console.log("Received from frontend:", selectedGid);
+    res.json({ message: `Hello, ${selectedGid}!` });
+});
+
+
 app.get("/data", async (req, res) => {
   try {
+    if (!selectedGid){
+      return res.status(400).json({ error: "No selectedGid set" });
+    }
+
     const accesstoken = await getAccessToken();
-    const data = await fetchVasttrafikData(accesstoken);
+    const data = await fetchVasttrafikData(accesstoken, selectedGid);
     res.json({data, accesstoken});
   } catch (error) {
     console.error("Error handling request:", error);
@@ -57,7 +70,6 @@ app.get("/data/:token", async (req, res) => {
     if (!token) {
       return res.redirect('/data');
     }
-
 try {
       const data = await fetchVasttrafikData(token);
       res.json(data);

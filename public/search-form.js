@@ -48,7 +48,18 @@ function displayResults(data) {
 
                 if (selectedGid) {
                     localStorage.setItem("selectedGid", selectedGid);
+                    fetch("/data", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        
+                        body: JSON.stringify({ selectedGid: localStorage.getItem("selectedGid") })
+                    })
+                    .then(response => response.json())
+                    .then(data => console.log(data))
+                    .catch(error => console.error("Error:", error));
                   }
+                
+                
 
                 console.log('Selected GID:', selectedGid);
             });
