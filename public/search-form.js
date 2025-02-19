@@ -30,7 +30,7 @@ form.addEventListener('submit', async (e) => {
 function displayStopPointOptions(data) {
     // Clear previous results
     suggestionsList.innerHTML = '';
-    
+     
     // Remove previous form if exists
     if (stopPointSelectionForm) {
         stopPointSelectionForm.remove();

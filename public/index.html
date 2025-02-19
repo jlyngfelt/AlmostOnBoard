@@ -3,38 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/styles.css">
     <title>Almost on Board!</title>
   </head>
   <body>
 
-    <form id="searchForm">
-      <input type="text" id="searchInput" required>
-      <button type="submit">Search</button>
-    </form>
-    <div id="results">
-      <ul id="suggestions" class="suggestions"></ul>
-    </div>
-
+    <img src="/img/search.png" alt="searchIcon" style="width: 25px;" class="searchIcon">
     
-    <!-- stopPointName -->
-    <h3 id="stopPointName">HÅLLPLATS:</h3>
 
-    <!-- transportMode shortName shortDirectiton  -->
-    <h5 id="shortName">Fetching data...</h5>
-    <h5 id="shortDirection"></h5>
-    
-    <img id="transportMode" src="/img/bus.png" alt="" style="width:100px;">
-   
+    <section class="settings">
 
-    <!-- daytime funktion + estTime  -->
-    <h1 id="estTime"></h1>
+      <form id="searchForm">
+        <input type="text" id="searchInput" required>
+        <button type="submit">Search</button>
+      </form>
+      
+      <div id="results">
+        <ul id="suggestions" class="suggestions"></ul>
+      </div>
 
-    <!-- isCancelled  -->
-    <h6 id="isCancelled"></h6>
+    </section>
+
+
+    <section class="display">
+
+      <!-- stopPointName -->
+      <h3 id="stopPointName">HÅLLPLATS:</h3>
+      
+      <!-- transportMode shortName shortDirectiton  -->
+      <h5 id="shortName">Fetching data...</h5>
+      <h5 id="shortDirection"></h5>
+      
+      <img id="transportMode" src="/img/bus.png" alt="" style="width:100px;">
+      
+      
+      <!-- daytime funktion + estTime  -->
+      <h1 id="estTime"></h1>
+      
+      <!-- isCancelled  -->
+      <h6 id="isCancelled"></h6>
+
+    </section>
+
   </body>
-  <script src="script.js">
-  </script>
-  <script src="search-form.js">
-  </script>
+  <script src="script.js"></script>
+  <script src="search-form.js"></script>
+  <script src="menu.js"></script>
 </html>
 

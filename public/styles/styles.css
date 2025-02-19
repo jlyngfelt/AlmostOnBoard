@@ -1,0 +1,13 @@
+body {
+    background-color: hotpink;
+}
+
+.settings,
+.display.closeDisplay {
+    display: none;
+}
+
+.display,
+.settings.openSettings {
+    display: block;
+}
