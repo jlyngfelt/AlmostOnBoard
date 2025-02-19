@@ -63,7 +63,7 @@ app.get("/data", async (req, res) => {
 
     const accesstoken = await getAccessToken();
     const data = await fetchVasttrafikData(accesstoken, configData);
-    
+
     res.json({data, accesstoken});
   } catch (error) {
     console.error("Error handling request:", error);
@@ -77,11 +77,11 @@ app.get("/data/:token", async (req, res) => {
     if (!token) {
       return res.redirect('/data');
     }
-try {
-      const data = await fetchVasttrafikData(token);
+    try {
+      // Pass configData here too
+      const data = await fetchVasttrafikData(token, configData);
       res.json(data);
     } catch (tokenError) {
-      // Om token är ogiltig, omdirigera till /data för att få ny token
       console.log("Token invalid, redirecting to get new token");
       return res.redirect('/data');
     }
