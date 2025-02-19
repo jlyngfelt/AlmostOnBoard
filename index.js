@@ -16,17 +16,11 @@ let configData = {
 
 const app = express();
 const port = 4000;
-
-
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 app.use(express.static(join(__dirname, "public")));
-
 dotenv.config();
-
 app.use(cors());
-
-// TEST START
 app.use(express.json());
 app.use(express.static('public'));
 
@@ -42,9 +36,6 @@ app.post('/search', async (req, res) => {
   }
 });
 
-//TEST END
-
-// let selectedGid = 9021014082053000; // Global variabel
 
 app.post('/data', async (req, res) => {
   const { selectedGid, platform } = req.body;
@@ -78,7 +69,6 @@ app.get("/data/:token", async (req, res) => {
       return res.redirect('/data');
     }
     try {
-      // Pass configData here too
       const data = await fetchVasttrafikData(token, configData);
       res.json(data);
     } catch (tokenError) {
