@@ -30,9 +30,10 @@ export const getAccessToken = async () => {
   }
 };
 
-const getDepartureData = async (accesstoken, selectedGid) => {
-
-  const platform = "A";
+const getDepartureData = async (accesstoken, config) => {
+  // Get selectedGid and platform from config
+  const selectedGid = config.selectedGid;
+  const platform = config.platform || "A";
 
   const configGetAPI = {
     method: "get",
@@ -62,9 +63,9 @@ const getDepartureData = async (accesstoken, selectedGid) => {
   }
 };
 
-export const fetchVasttrafikData = async (token, selectedGid) => {
+export const fetchVasttrafikData = async (token, config) => {
   try {
-    const departureData = await getDepartureData(token, selectedGid);
+    const departureData = await getDepartureData(token, config);
     return departureData;
   } catch (error) {
     console.error("Error in fetchVasttrafikData:", error);

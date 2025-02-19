@@ -9,6 +9,10 @@ import { join } from "path";
 
 import { searchForStopPoint } from './search.js';
 
+let configData = {
+  selectedGid: 9021014082053000,
+  platform: 'A'
+};
 
 const app = express();
 const port = 4000;
@@ -40,23 +44,26 @@ app.post('/search', async (req, res) => {
 
 //TEST END
 
-let selectedGid = 9021014082053000; // Global variabel
+// let selectedGid = 9021014082053000; // Global variabel
 
 app.post('/data', async (req, res) => {
-    selectedGid = req.body.selectedGid;
-    console.log("Received from frontend:", selectedGid);
-    res.json({ message: `Hello, ${selectedGid}!` });
+  const { selectedGid, platform } = req.body;
+  configData.selectedGid = selectedGid;
+  configData.platform = platform || 'A';
+  console.log("Updated config:", configData);
+  res.json({ message: 'Configuration updated', config: configData });
 });
 
 
 app.get("/data", async (req, res) => {
   try {
-    if (!selectedGid){
+    if (!configData.selectedGid){
       return res.status(400).json({ error: "No selectedGid set" });
     }
 
     const accesstoken = await getAccessToken();
-    const data = await fetchVasttrafikData(accesstoken, selectedGid);
+    const data = await fetchVasttrafikData(accesstoken, configData);
+    
     res.json({data, accesstoken});
   } catch (error) {
     console.error("Error handling request:", error);

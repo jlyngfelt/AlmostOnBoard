@@ -42,4 +42,4 @@ async function fetchData() {
 }
 
 fetchData();
-setInterval(fetchData, 3000); // Uppdatera var 30:e sekund
+setInterval(fetchData, 30000); // Uppdatera var 30:e sekund
