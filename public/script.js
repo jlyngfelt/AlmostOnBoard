@@ -26,7 +26,7 @@ async function fetchData() {
     document.getElementById("shortDirection").textContent = data.firstDeparture.shortDirection;
     document.getElementById("stopPointName").textContent = data.firstDeparture.stopPointName;
     document.getElementById("transportMode").src = "/img/" + data.firstDeparture.transportMode + ".png";
-    document.getElementById("isCancelled").textContent = data.firstDeparture.isCancelled;
+    document.getElementById("isCancelled").src = "/img/" + data.firstDeparture.isCancelled + ".png";
 
     const estTime = new Date(data.firstDeparture.estTime); // Omvandla sträng till Date-objekt
     const now = new Date();
