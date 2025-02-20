@@ -19,11 +19,32 @@ const app = express();
 const port = 4000;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-app.use(express.static(join(__dirname, "public")));
 dotenv.config();
+
 app.use(cors());
+
 app.use(express.json());
 app.use(express.static('public'));
+app.use(express.static(join(__dirname, "public")));
+
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
+
+app.use((req, res, next) => {
+
+  if (req.path === '/' || req.path.startsWith('/img/')) {
+    return next();
+  }
+  
+  const referrer = req.get('Referrer');
+
+  if (!referrer || !referrer.includes(req.get('host'))) {
+    return res.redirect('/'); 
+  }
+  
+  next();
+});
 
 app.post('/search', async (req, res) => {
   try {
@@ -83,11 +104,6 @@ app.get("/data/:token", async (req, res) => {
     console.error("Error handling request:", error);
     res.status(500).json({ error: "Failed to fetch data" });
   }
-});
-
-
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
 });
 
 export default app;
