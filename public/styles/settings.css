@@ -1,6 +1,8 @@
 .settings {
-
+    margin-top: 2rem;
 }
+
+
 
 input {
     width: 50vw;
@@ -9,8 +11,24 @@ input {
     font-family: var(--main-font);
     font-size: 1.5rem;
     font-weight: 200;
+    border: none;
+    border-radius: 5px;
 }
 
-input:active {
-    
+input:focus {
+    outline:none;
+}
+
+#searchForm button { 
+    background-color: var(--background-color-light);
+    border-radius: 100%;
+    height: 3.5rem;
+    width: 3.5rem;
+    border: none;
+    margin:7px;
+}
+
+#searchForm button:active { 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(0.95);
 }
