@@ -1,15 +1,13 @@
-// search-form.js - enhanced version
 const form = document.querySelector('#searchForm');
 const resultsDiv = document.querySelector('#results');
 const suggestionsList = document.getElementById('suggestions');
 
-// Add this to the top of your existing file
 let stopPointSelectionForm = null;
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
     const searchText = document.querySelector('#searchInput').value;
+
     try {
         const response = await fetch('/search', {
             method: 'POST',
@@ -23,29 +21,26 @@ form.addEventListener('submit', async (e) => {
         displayStopPointOptions(data);
         
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Error fetching stop point options:', error);
     }
 });
 
 function displayStopPointOptions(data) {
-    // Clear previous results
     suggestionsList.innerHTML = '';
      
-    // Remove previous form if exists
     if (stopPointSelectionForm) {
         stopPointSelectionForm.remove();
     }
     
-    // Create new form for stop point selection
     stopPointSelectionForm = document.createElement('form');
     stopPointSelectionForm.id = 'stopPointSelectionForm';
     
-    // Add heading
+    //Rubrik för hållplats-val
     const heading = document.createElement('h4');
     heading.textContent = 'Select a stop point:';
     stopPointSelectionForm.appendChild(heading);
     
-    // Create radio buttons for each stop point
+    // Radio-knappar för hållplatser
     if (data.length > 0) {
         data.forEach((item, index) => {
             const radioContainer = document.createElement('div');
@@ -67,9 +62,8 @@ function displayStopPointOptions(data) {
             stopPointSelectionForm.appendChild(radioContainer);
         });
         
-        // Add platform input field
+        // Fält för platforms-val
         const platformContainer = document.createElement('div');
-        platformContainer.style.marginTop = '10px';
         
         const platformLabel = document.createElement('label');
         platformLabel.htmlFor = 'platformInput';
@@ -85,17 +79,13 @@ function displayStopPointOptions(data) {
         platformContainer.appendChild(platformInput);
         stopPointSelectionForm.appendChild(platformContainer);
         
-        // Add submit button
         const submitButton = document.createElement('button');
         submitButton.type = 'submit';
         submitButton.textContent = 'Get Departures';
-        submitButton.style.marginTop = '10px';
         stopPointSelectionForm.appendChild(submitButton);
         
-        // Add event listener for the new form
         stopPointSelectionForm.addEventListener('submit', handleStopPointSelection);
         
-        // Append the form to results area
         resultsDiv.appendChild(stopPointSelectionForm);
     } else {
         suggestionsList.innerHTML = '<li>No stop points found</li>';
@@ -105,14 +95,10 @@ function displayStopPointOptions(data) {
 function handleStopPointSelection(e) {
     e.preventDefault();
     
-    // Get selected stop point GID
     const selectedRadio = document.querySelector('input[name="stopPoint"]:checked');
     const selectedGid = selectedRadio.value;
-    
-    // Get platform value
     const platform = document.getElementById('platformInput').value || 'A';
     
-    // Send to backend
     fetch("/data", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -123,8 +109,8 @@ function handleStopPointSelection(e) {
     })
     .then(response => response.json())
     .then(data => {
+        
         console.log('Server response:', data);
-        // Trigger data fetch to update display
         fetchData();
     })
     .catch(error => console.error("Error:", error));

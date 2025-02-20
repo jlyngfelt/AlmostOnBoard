@@ -56,9 +56,12 @@ app.get("/data", async (req, res) => {
     const data = await fetchVasttrafikData(accesstoken, configData);
 
     res.json({data, accesstoken});
+
   } catch (error) {
+
     console.error("Error handling request:", error);
     res.status(500).json({ error: "Failed to fetch data" });
+    
   }
 });
 
