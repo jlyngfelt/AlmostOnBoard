@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Jura:wght@300..700&family=Wallpoet&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/styles.css">
     <title>Almost on Board!</title>
   </head>
@@ -31,17 +34,23 @@
       <h3 id="stopPointName">HÅLLPLATS:</h3>
       
       <!-- transportMode shortName shortDirectiton  -->
-      <h5 id="shortName">Fetching data...</h5>
-      <h5 id="shortDirection"></h5>
+       <article class="name__direction">
+        <div class="shortName__box" style="background-color:greenyellow;">
+          <h5 id="shortName" style="color: hotpink;">Fetching data...</h5>
+        </div>
+         <h5 id="shortDirection"></h5>
+        </article>
       
       <img id="transportMode" src="/img/bus.png" alt="" style="width:100px;">
       
       
       <!-- daytime funktion + estTime  -->
-      <h1 id="estTime"></h1>
+      <div class="estTime__box">
+        <h1 id="estTime"></h1>
+      </div>
       
       <!-- isCancelled  -->
-      <h6 id="isCancelled"></h6>
+      <img id="isCancelled" src="/img/false.png" alt="" style="width:100px;">
 
     </section>
 

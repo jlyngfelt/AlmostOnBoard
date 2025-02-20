@@ -1,13 +1,74 @@
-body {
-    background-color: hotpink;
+:root {
+  --background-color: rgb(233, 218, 196);
+  --background-color-light: rgb(239, 230, 217);
+  --vasttrafik-dark: #00394d;
+  --vasttrafik-light: #009ddb;
+
+  --main-font: Archivo;
+  --numbers-font: Jura;
 }
+
+body {
+  background-color: var(--background-color);
+  overflow-x: hidden;
+}
+
+h1 {
+  font-family: var(--numbers-font);
+  font-weight: 100;
+  font-size: 80vw;
+  margin: -2rem 0 0 0;
+}
+
+h3 {
+  font-family: var(--main-font);
+  font-size: 15vw;
+  font-weight: 200;
+  text-align: center;
+  margin: 0 0 2rem 0;
+  
+}
+
+h5 {
+  font-family: var(--main-font);
+  display: inline;
+}
+
+#shortName {
+    font-size: 40px;
+}
+
+
 
 .settings,
 .display.closeDisplay {
-    display: none;
+  display: none;
 }
 
 .display,
 .settings.openSettings {
-    display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.name__direction {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.shortName__box {
+    width: 80px;
+    height:80px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin: 0 0 1rem 0 ;
+}
+
+.estTime__box {
+    background-color: var(--background-color-light);
+    width: 60vw;
 }
