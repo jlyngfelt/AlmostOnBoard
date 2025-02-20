@@ -31,7 +31,6 @@ export const getAccessToken = async () => {
 };
 
 const getDepartureData = async (accesstoken, config) => {
-  // Get selectedGid and platform from config
   const selectedGid = config.selectedGid;
   const platform = config.platform || "A";
 
