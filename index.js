@@ -11,7 +11,7 @@ import { join } from "path";
 
 
 let configData = {
-  selectedGid: 9021014082053000,
+  selectedGid: 9021014004730000,
   platform: 'A'
 };
 
@@ -32,17 +32,13 @@ app.listen(port, () => {
 });
 
 app.use((req, res, next) => {
-
   if (req.path === '/' || req.path.startsWith('/img/')) {
     return next();
   }
-  
   const referrer = req.get('Referrer');
-
   if (!referrer || !referrer.includes(req.get('host'))) {
     return res.redirect('/'); 
   }
-  
   next();
 });
 
