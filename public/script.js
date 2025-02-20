@@ -31,7 +31,10 @@ async function fetchData() {
     const now = new Date();
     const diffInMinutes = Math.max(0, Math.round((estTime - now) / 1000 / 60));
 
-    document.getElementById("estTime").textContent = diffInMinutes;
+    document.getElementById("estTime").textContent = diffInMinutes === 0 ? "NU" : diffInMinutes;
+
+    document.getElementById("shortName__box").style = "background-color:" + data.firstDeparture.backgroundColor + ";";
+    document.getElementById("shortName").style = "color:" + data.firstDeparture.foregroundColor + ";";
 
   } catch (error) {
     console.error("Error fetching data:", error);
