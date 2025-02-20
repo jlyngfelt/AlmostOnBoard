@@ -7,7 +7,6 @@ async function fetchData() {
       endpoint = `/data/${localToken}`;
     }
 
-
     const response = await fetch(`http://localhost:4000${endpoint}`);
 
     // Link to use on deploy:
@@ -33,7 +32,6 @@ async function fetchData() {
     const diffInMinutes = Math.max(0, Math.round((estTime - now) / 1000 / 60));
 
     document.getElementById("estTime").textContent = diffInMinutes;
-
 
   } catch (error) {
     console.error("Error fetching data:", error);

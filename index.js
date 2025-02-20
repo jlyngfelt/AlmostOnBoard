@@ -1,13 +1,14 @@
 import express from "express";
-import { fetchVasttrafikData } from "./functions.js";
-import { getAccessToken } from "./functions.js";
 import cors from "cors";
 import dotenv from "dotenv";
 import path from "path";
+
+import { fetchVasttrafikData } from "./src/departureFunctions.js";
+import { searchForStopPoint } from './src/search.js';
+import { getAccessToken } from "./src/departureFunctions.js";
 import { fileURLToPath } from "url";
 import { join } from "path";
 
-import { searchForStopPoint } from './search.js';
 
 let configData = {
   selectedGid: 9021014082053000,
