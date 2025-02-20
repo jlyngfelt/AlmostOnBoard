@@ -1,0 +1,16 @@
+.settings {
+
+}
+
+input {
+    width: 50vw;
+    height: 2rem;
+    padding: 12px;
+    font-family: var(--main-font);
+    font-size: 1.5rem;
+    font-weight: 200;
+}
+
+input:active {
+    
+}

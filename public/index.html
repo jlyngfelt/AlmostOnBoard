@@ -7,11 +7,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Jura:wght@300..700&family=Wallpoet&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/settings.css">
     <title>Almost on Board!</title>
   </head>
   <body>
-
-    <img src="/img/search.png" alt="searchIcon" style="width: 25px;" class="searchIcon">
+<div class="icon__box">
+  <img src="/img/search.png" alt="searchIcon"  class="searchIcon">
+</div>
     
 
     <section class="settings">
@@ -35,8 +37,8 @@
       
       <!-- transportMode shortName shortDirectiton  -->
        <article class="name__direction">
-        <div class="shortName__box" style="background-color:greenyellow;">
-          <h5 id="shortName" style="color: hotpink;">Fetching data...</h5>
+        <div class="shortName__box" id="shortName__box" >
+          <h5 id="shortName" >Fetching data...</h5>
         </div>
          <h5 id="shortDirection"></h5>
         </article>
