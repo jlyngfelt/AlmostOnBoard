@@ -4,7 +4,7 @@
 
 
 
-input {
+input#searchInput {
     width: 50vw;
     height: 2rem;
     padding: 12px;
@@ -32,3 +32,18 @@ input:focus {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transform: scale(0.95);
 }
+
+#stopPointSelectionForm div {
+    margin: 0.7rem 0 0.7rem 0;
+}
+
+#stopPointSelectionForm div label{
+    font-family: var(--main-font);
+    font-size: 1rem;
+    margin: 30px 0px 30px 8px;
+}
+
+#stopPointSelectionForm div input[type="radio"]:checked {
+    accent-color: var(--vasttrafik-dark);
+}
+
