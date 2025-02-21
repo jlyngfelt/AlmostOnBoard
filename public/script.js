@@ -33,8 +33,9 @@ async function fetchData() {
 
     document.getElementById("estTime").textContent = diffInMinutes === 0 ? "NU" : diffInMinutes;
 
-    document.getElementById("shortName__box").style = "background-color:" + data.firstDeparture.backgroundColor + ";";
-    document.getElementById("shortName").style = "color:" + data.firstDeparture.foregroundColor + ";";
+    document.getElementById("shortName__box").style.backgroundColor = data.firstDeparture.backgroundColor;
+    document.getElementById("shortName").style.color = data.firstDeparture.foregroundColor;
+
 
   } catch (error) {
     console.error("Error fetching data:", error);

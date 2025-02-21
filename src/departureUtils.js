@@ -8,7 +8,7 @@ export function getDepartures(allInformation)
         isCancelled: result?.isCancelled ?? "No cancellation data available",
         estTime: result?.estimatedOtherwisePlannedTime ?? "No estimated time available",
         backgroundColor: result?.serviceJourney?.line?.backgroundColor ?? "No color available",
-        foregroundColor: result?.serviceJourney?.line?.foregroundColorColor ?? "No color available"
+        foregroundColor: result?.serviceJourney?.line?.foregroundColor ?? "No color available"
         
     })) ?? [];
 }

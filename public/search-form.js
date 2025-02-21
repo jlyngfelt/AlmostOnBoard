@@ -67,7 +67,8 @@ function displayStopPointOptions(data) {
         
         const platformLabel = document.createElement('label');
         platformLabel.htmlFor = 'platformInput';
-        platformLabel.textContent = 'Platform: ';
+        platformLabel.textContent = 'Läge: ';
+        platformLabel.classList.add('platformInput');
         
         const platformInput = document.createElement('input');
         platformInput.type = 'text';
@@ -81,7 +82,7 @@ function displayStopPointOptions(data) {
         
         const submitButton = document.createElement('button');
         submitButton.type = 'submit';
-        submitButton.textContent = 'Get Departures';
+        submitButton.textContent = 'SPARA';
         stopPointSelectionForm.appendChild(submitButton);
         
         stopPointSelectionForm.addEventListener('submit', handleStopPointSelection);
