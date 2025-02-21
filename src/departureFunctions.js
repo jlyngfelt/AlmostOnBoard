@@ -2,7 +2,6 @@ import axios from "axios";
 import qs from "qs";
 import { getDepartures } from "./departureUtils.js";
 
-
 export const getAccessToken = async () => {
   const data = qs.stringify({
     grant_type: "client_credentials",
@@ -46,15 +45,12 @@ const getDepartureData = async (accesstoken, config) => {
   try {
     const response = await axios.request(configGetAPI);
     const allInformation = response.data;
-
     const departures = getDepartures(allInformation);
 
     return {
-
       firstDeparture: departures[0] ?? null,
       secondDeparture: departures[1] ?? null,
       thirdDeparture: departures[2] ?? null,
-
     };
   } catch (error) {
     console.error("Error getting departure data:", error);

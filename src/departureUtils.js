@@ -13,7 +13,6 @@ export function getDepartures(allInformation)
     })) ?? [];
 }
 
-
-//Om inget resultat är tillgängligt crashar inte en error hela funktionen utan returnerar ett respons istället
+//Om inget resultat är tillgängligt crashar inte det hela funktionen utan returnerar ett respons istället
 
 

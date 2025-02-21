@@ -30,9 +30,7 @@ async function fetchData() {
       document.getElementById(prefix + "stopPointName").textContent = departure.stopPointName;
       document.getElementById(prefix + "transportMode").src = "/img/" + departure.transportMode + ".png";
       document.getElementById(prefix + "isCancelled").src = "/img/" + departure.isCancelled + ".png";
-
       document.getElementById(prefix + "estTime").textContent = diffInMinutes === 0 ? "NU" : diffInMinutes;
-
       document.getElementById(prefix + "shortName__box").style.backgroundColor = departure.backgroundColor;
       document.getElementById(prefix + "shortName").style.color = departure.foregroundColor;
 

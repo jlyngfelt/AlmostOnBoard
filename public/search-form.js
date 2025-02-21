@@ -16,10 +16,8 @@ form.addEventListener('submit', async (e) => {
             },
             body: JSON.stringify({ searchText })
         });
-        
         const data = await response.json();
-        displayStopPointOptions(data);
-        
+        displayStopPointOptions(data);    
     } catch (error) {
         console.error('Error fetching stop point options:', error);
     }
@@ -27,14 +25,13 @@ form.addEventListener('submit', async (e) => {
 
 function displayStopPointOptions(data) {
     suggestionsList.innerHTML = '';
-     
+
     if (stopPointSelectionForm) {
         stopPointSelectionForm.remove();
     }
-    
+
     stopPointSelectionForm = document.createElement('form');
     stopPointSelectionForm.id = 'stopPointSelectionForm';
-    
     const heading = document.createElement('h4');
     heading.textContent = 'Välj hållplats:';
     stopPointSelectionForm.appendChild(heading);
@@ -42,18 +39,18 @@ function displayStopPointOptions(data) {
     if (data.length > 0) {
         data.forEach((item, index) => {
             const radioContainer = document.createElement('div');
-            
             const radioInput = document.createElement('input');
+            const radioLabel = document.createElement('label');
+
             radioInput.type = 'radio';
             radioInput.name = 'stopPoint';
             radioInput.id = `stopPoint${index}`;
             radioInput.value = item.gid;
             radioInput.required = true;
-            if (index === 0) radioInput.checked = true;
-            
-            const radioLabel = document.createElement('label');
             radioLabel.htmlFor = `stopPoint${index}`;
             radioLabel.textContent = item.name;
+
+            if (index === 0) radioInput.checked = true;
             
             radioContainer.appendChild(radioInput);
             radioContainer.appendChild(radioLabel);
