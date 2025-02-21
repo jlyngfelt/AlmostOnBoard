@@ -96,6 +96,11 @@ h5 {
     margin-top: 2rem;
 }
 
+#first_isCancelled {
+    height: 50px;
+    width: 50px;
+}
+
 
 article div p {
   display:none;
