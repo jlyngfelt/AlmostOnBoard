@@ -37,18 +37,18 @@ Almost On Board is a web application that provides real-time public transportati
    
 2. Install dependencies
 		```bash
-		npm install
+    npm install
 		
 3. Create an account on [https://developer.vasttrafik.se/](https://developer.vasttrafik.se/) and create an app for program and fetch your "Klientidentifierare" (VASTTRAFIK_ID) & "Hemlighet" (VASTTRAFIK_SECRET)
 		
 4.  Create a .env file in the root directory with your Västtrafik API credentials
 		```bash
-		VASTTRAFIK_ID=your_client_id
-		VASTTRAFIK_SECRET=your_client_secret
+    VASTTRAFIK_ID=your_client_id
+    VASTTRAFIK_SECRET=your_client_secret
 
 5. Start the server
 		```bash
-		npm run start
+    npm run start
 
 6. Access the application at http://localhost:4000
 
@@ -64,7 +64,9 @@ Almost On Board is a web application that provides real-time public transportati
 The application includes several API endpoints:
 
 `/search` - Search for stop points by text
+
 `/data` - Get departure information for a selected stop point
+
 `/data/:token` - Get departure information using a cached token
 
 ### Deployment
