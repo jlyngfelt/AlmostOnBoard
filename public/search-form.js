@@ -35,16 +35,13 @@ function displayStopPointOptions(data) {
     stopPointSelectionForm = document.createElement('form');
     stopPointSelectionForm.id = 'stopPointSelectionForm';
     
-    //Rubrik för hållplats-val
     const heading = document.createElement('h4');
     heading.textContent = 'Välj hållplats:';
     stopPointSelectionForm.appendChild(heading);
-    
-    // Radio-knappar för hållplatser
+
     if (data.length > 0) {
         data.forEach((item, index) => {
             const radioContainer = document.createElement('div');
-           
             
             const radioInput = document.createElement('input');
             radioInput.type = 'radio';
@@ -63,12 +60,10 @@ function displayStopPointOptions(data) {
             stopPointSelectionForm.appendChild(radioContainer);
         });
         
-        // Fält för platforms-val
         const platformContainer = document.createElement('div');
         platformContainer.style.marginTop = '40px';
         platformContainer.classList.add('selectPlatform')
 
-        
         const platformLabel = document.createElement('label');
         platformLabel.htmlFor = 'platformInput';
         platformLabel.textContent = 'Läge: ';
