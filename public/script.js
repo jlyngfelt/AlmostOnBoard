@@ -25,13 +25,17 @@ async function fetchData() {
     document.getElementById("shortDirection").textContent = data.firstDeparture.shortDirection;
     document.getElementById("stopPointName").textContent = data.firstDeparture.stopPointName;
     document.getElementById("transportMode").src = "/img/" + data.firstDeparture.transportMode + ".png";
-    document.getElementById("isCancelled").textContent = data.firstDeparture.isCancelled;
+    document.getElementById("isCancelled").src = "/img/" + data.firstDeparture.isCancelled + ".png";
 
     const estTime = new Date(data.firstDeparture.estTime); // Omvandla sträng till Date-objekt
     const now = new Date();
     const diffInMinutes = Math.max(0, Math.round((estTime - now) / 1000 / 60));
 
-    document.getElementById("estTime").textContent = diffInMinutes;
+    document.getElementById("estTime").textContent = diffInMinutes === 0 ? "NU" : diffInMinutes;
+
+    document.getElementById("shortName__box").style.backgroundColor = data.firstDeparture.backgroundColor;
+    document.getElementById("shortName").style.color = data.firstDeparture.foregroundColor;
+
 
   } catch (error) {
     console.error("Error fetching data:", error);

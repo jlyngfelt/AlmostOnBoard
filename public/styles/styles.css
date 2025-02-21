@@ -1,13 +1,99 @@
-body {
-    background-color: hotpink;
+:root {
+  --background-color: rgb(233, 218, 196);
+  --background-color-light: rgb(239, 230, 217);
+  --vasttrafik-dark: #00394d;
+  --vasttrafik-light: #009ddb;
+
+  --main-font: Archivo;
+  --numbers-font: Jura;
 }
+
+body {
+  background-color: var(--background-color);
+  overflow-x: hidden;
+}
+
+h1 {
+  font-family: var(--numbers-font);
+  font-weight: 100;
+  font-size: 10rem;
+  margin: -20px 0 0 0;
+}
+
+h3 {
+  font-family: var(--main-font);
+  font-size: 11vw;
+  font-weight: 200;
+  text-align: center;
+  margin: 0 0 2rem 0;
+  
+}
+
+h4 {
+    font-family: var(--main-font);
+    font-size: 1.7rem;
+    font-weight: 300;
+
+}
+
+h5 {
+  font-family: var(--main-font);
+  display: inline;
+}
+
+.searchIcon {
+    width: 40px;
+
+}
+
+#shortName {
+    font-size: 40px;
+}
+
+
 
 .settings,
 .display.closeDisplay {
-    display: none;
+  display: none;
 }
 
 .display,
 .settings.openSettings {
-    display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.name__direction {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon__box {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+/* lägg till så pil flyttar sig */
+
+.shortName__box {
+    width: 80px;
+    height:80px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin: 0 0 1rem 0 ;
+}
+
+.estTime__box {
+    background-color: var(--background-color-light);
+    width: 70vw;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;;
+    margin-top: 2rem;
+}
+
+

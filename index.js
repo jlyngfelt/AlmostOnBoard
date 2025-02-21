@@ -42,44 +42,38 @@ app.use((req, res, next) => {
   next();
 });
 
-app.post('/search', async (req, res) => {
+app.post("/search", async (req, res) => {
   try {
-      const { searchText } = req.body;
-      const accessToken = await getAccessToken();
-      const results = await searchForStopPoint(accessToken, searchText);
-      res.json(results);
-      
+    const { searchText } = req.body;
+    const accessToken = await getAccessToken();
+    const results = await searchForStopPoint(accessToken, searchText);
+    res.json(results);
   } catch (error) {
-      res.status(500).json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 });
 
-
-app.post('/data', async (req, res) => {
+app.post("/data", async (req, res) => {
   const { selectedGid, platform } = req.body;
   configData.selectedGid = selectedGid;
-  configData.platform = platform || 'A';
+  configData.platform = platform || "A";
   console.log("Updated config:", configData);
-  res.json({ message: 'Configuration updated', config: configData });
+  res.json({ message: "Configuration updated", config: configData });
 });
-
 
 app.get("/data", async (req, res) => {
   try {
-    if (!configData.selectedGid){
+    if (!configData.selectedGid) {
       return res.status(400).json({ error: "No selectedGid set" });
     }
 
     const accesstoken = await getAccessToken();
     const data = await fetchVasttrafikData(accesstoken, configData);
 
-    res.json({data, accesstoken});
-
+    res.json({ data, accesstoken });
   } catch (error) {
-
     console.error("Error handling request:", error);
     res.status(500).json({ error: "Failed to fetch data" });
-    
   }
 });
 
@@ -87,14 +81,14 @@ app.get("/data/:token", async (req, res) => {
   try {
     const { token } = req.params;
     if (!token) {
-      return res.redirect('/data');
+      return res.redirect("/data");
     }
     try {
       const data = await fetchVasttrafikData(token, configData);
       res.json(data);
     } catch (tokenError) {
       console.log("Token invalid, redirecting to get new token");
-      return res.redirect('/data');
+      return res.redirect("/data");
     }
   } catch (error) {
     console.error("Error handling request:", error);

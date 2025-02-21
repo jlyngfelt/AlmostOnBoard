@@ -3,19 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Jura:wght@300..700&family=Wallpoet&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/settings.css">
     <title>Almost on Board!</title>
   </head>
   <body>
-
-    <img src="/img/search.png" alt="searchIcon" style="width: 25px;" class="searchIcon">
+<div class="icon__box">
+  <img src="/img/search.png" alt="searchIcon"  class="searchIcon">
+</div>
     
 
     <section class="settings">
 
       <form id="searchForm">
         <input type="text" id="searchInput" required>
-        <button type="submit">Search</button>
+        <button type="submit">SÖK</button>
       </form>
       
       <div id="results">
@@ -28,20 +33,46 @@
     <section class="display">
 
       <!-- stopPointName -->
-      <h3 id="stopPointName">HÅLLPLATS:</h3>
+      <h3 id="stopPointName">Laddar avgångar... <br><br> Tar det lång tid? <br><br> Testa ladda om sidan</h3>
       
       <!-- transportMode shortName shortDirectiton  -->
-      <h5 id="shortName">Fetching data...</h5>
-      <h5 id="shortDirection"></h5>
+       <article class="name__direction">
+        <div class="shortName__box" id="shortName__box" >
+          <h5 id="shortName" ></h5>
+        </div>
+         <h5 id="shortDirection"></h5>
+        </article>
       
       <img id="transportMode" src="/img/bus.png" alt="" style="width:100px;">
       
       
       <!-- daytime funktion + estTime  -->
-      <h1 id="estTime"></h1>
+      <div class="estTime__box">
+        <h1 id="estTime"></h1>
+      </div>
       
       <!-- isCancelled  -->
-      <h6 id="isCancelled"></h6>
+      <img id="isCancelled" src="/img/false.png" alt="" style="width:100px;">
+
+      <article class="secondDeparture">
+        <div class="shortName__box" id="shortName__box" >
+          <h5 id="shortName" ></h5>
+        </div>
+
+          <div class="estTime__box">
+            <h1 id="estTime"></h1>
+          </div>
+      </article>
+
+      <article class="thirdDeparture">
+        <div class="shortName__box" id="shortName__box" >
+          <h5 id="shortName" ></h5>
+        </div>
+
+          <div class="estTime__box">
+            <h1 id="estTime"></h1>
+          </div>
+      </article>
 
     </section>
 
