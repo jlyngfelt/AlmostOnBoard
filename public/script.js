@@ -22,7 +22,7 @@ async function fetchData() {
 
     function updateDepartureInfo(departure, prefix) {
       const now = new Date();
-      const estTime = new Date(data.firstDeparture.estTime);
+      const estTime = new Date(departure.estTime);
       const diffInMinutes = Math.max(0, Math.round((estTime - now) / 1000 / 60));
 
       document.getElementById(prefix + "shortName").textContent = departure.shortName;
