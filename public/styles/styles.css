@@ -46,7 +46,7 @@ h5 {
 
 }
 
-#shortName {
+#first_shortName {
     font-size: 40px;
 }
 
@@ -97,3 +97,6 @@ h5 {
 }
 
 
+article div p {
+  display:none;
+}

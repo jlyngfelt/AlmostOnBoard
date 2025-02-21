@@ -13,7 +13,6 @@ async function fetchData() {
     // const response = await fetch(`https://almost-on-board.vercel.app${endpoint}`);
 
     const result = await response.json();
-
     const data = result.data || result;
     const tokenString = JSON.stringify(result.accesstoken);
 
@@ -21,20 +20,27 @@ async function fetchData() {
       localStorage.setItem("accesstoken", result.accesstoken);
     }
 
-    document.getElementById("shortName").textContent = data.firstDeparture.shortName;
-    document.getElementById("shortDirection").textContent = data.firstDeparture.shortDirection;
-    document.getElementById("stopPointName").textContent = data.firstDeparture.stopPointName;
-    document.getElementById("transportMode").src = "/img/" + data.firstDeparture.transportMode + ".png";
-    document.getElementById("isCancelled").src = "/img/" + data.firstDeparture.isCancelled + ".png";
+    function updateDepartureInfo(departure, prefix) {
+      const now = new Date();
+      const estTime = new Date(data.firstDeparture.estTime);
+      const diffInMinutes = Math.max(0, Math.round((estTime - now) / 1000 / 60));
 
-    const estTime = new Date(data.firstDeparture.estTime); // Omvandla sträng till Date-objekt
-    const now = new Date();
-    const diffInMinutes = Math.max(0, Math.round((estTime - now) / 1000 / 60));
+      document.getElementById(prefix + "shortName").textContent = departure.shortName;
+      document.getElementById(prefix + "shortDirection").textContent = departure.shortDirection;
+      document.getElementById(prefix + "stopPointName").textContent = departure.stopPointName;
+      document.getElementById(prefix + "transportMode").src = "/img/" + departure.transportMode + ".png";
+      document.getElementById(prefix + "isCancelled").src = "/img/" + departure.isCancelled + ".png";
 
-    document.getElementById("estTime").textContent = diffInMinutes === 0 ? "NU" : diffInMinutes;
+      document.getElementById(prefix + "estTime").textContent = diffInMinutes === 0 ? "NU" : diffInMinutes;
 
-    document.getElementById("shortName__box").style.backgroundColor = data.firstDeparture.backgroundColor;
-    document.getElementById("shortName").style.color = data.firstDeparture.foregroundColor;
+      document.getElementById(prefix + "shortName__box").style.backgroundColor = departure.backgroundColor;
+      document.getElementById(prefix + "shortName").style.color = departure.foregroundColor;
+
+    }
+
+    updateDepartureInfo(data.firstDeparture, "first_");
+    updateDepartureInfo(data.secondDeparture, "second_");
+    updateDepartureInfo(data.thirdDeparture, "third_");
 
 
   } catch (error) {
