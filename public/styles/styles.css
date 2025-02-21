@@ -100,3 +100,27 @@ h5 {
 article div p {
   display:none;
 }
+
+.futureDeparture {
+    display:flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+
+.secondDeparture, .thirdDeparture {
+    display: flex;
+    align-items: stretch;
+    }
+    
+    .secondDeparture .shortName__box, .thirdDeparture .shortName__box {
+        height: 3rem;
+        width: 3rem;
+    }
+    .secondDeparture .estTime__box,  .thirdDeparture .estTime__box {
+        background-color: var(--background-color);
+        width: 3rem;
+        
+    }
+    .secondDeparture .estTime__box h1, .thirdDeparture .estTime__box h1 {
+        font-size: 2rem;
+    }
