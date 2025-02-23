@@ -7,10 +7,10 @@ async function fetchData() {
       endpoint = `/data/${localToken}`;
     }
 
-    const response = await fetch(`http://localhost:4000${endpoint}`);
+    // const response = await fetch(`http://localhost:4000${endpoint}`);
 
     // Link to use on deploy:
-    // const response = await fetch(`https://almost-on-board.vercel.app${endpoint}`);
+    const response = await fetch(`https://almost-on-board.vercel.app${endpoint}`);
 
     const result = await response.json();
     const data = result.data || result;
