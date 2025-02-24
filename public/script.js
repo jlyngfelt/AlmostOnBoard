@@ -1,25 +1,11 @@
 async function fetchData() {
   try {
-    const storedGid = localStorage.getItem("selectedGid");
-    const storedPlatform = localStorage.getItem("selectedPlatform");
     const localToken = localStorage.getItem("accesstoken");
     let endpoint = "/data";
 
     if (localToken && localToken !== "undefined") {
       endpoint = `/data/${localToken}`;
     }
-
-    if (storedGid && storedPlatform) {
-      await fetch("/data", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ 
-          selectedGid: storedGid,
-          platform: storedPlatform 
-        })
-      });
-    }
-
 
     // const response = await fetch(`http://localhost:4000${endpoint}`);
 
@@ -57,8 +43,7 @@ async function fetchData() {
 
   } catch (error) {
     console.error("Error fetching data:", error);
-    localStorage.removeItem("selectedGid");
-    localStorage.removeItem("selectedPlatform");
+    localStorage.removeItem("accesstoken");
   }
 }
 

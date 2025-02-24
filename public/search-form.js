@@ -96,9 +96,6 @@ function handleStopPointSelection(e) {
     const selectedRadio = document.querySelector('input[name="stopPoint"]:checked');
     const selectedGid = selectedRadio.value;
     const platform = document.getElementById('platformInput').value || 'A';
-
-    localStorage.setItem("selectedGid", selectedGid);
-    localStorage.setItem("selectedPlatform", platform);
     
     fetch("/data", {
         method: "POST",

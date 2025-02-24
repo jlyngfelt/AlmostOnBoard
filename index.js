@@ -11,7 +11,7 @@ import { join } from "path";
 
 
 let configData = {
-  selectedGid: null,
+  selectedGid: 9021014004490000,
   platform: 'A'
 };
 
